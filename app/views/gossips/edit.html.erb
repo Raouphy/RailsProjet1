@@ -1,0 +1,26 @@
+<h1>Corrige ton gossip</h1>
+
+<%= form_tag gossip_path(@gossip), method: :put do %>
+
+<% if @gossip.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@gossip.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @gossip.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= label_tag 'Auteur', 'Anonyme' %>
+  <%= text_field_tag :Auteur, '', :class => "form-control" %>
+
+ <%= label_tag 'content', 'Ton Gossip' %>
+  <%= text_area_tag :content, '', :class => "form-control" %>
+
+<%= submit_tag "corriger", :class => "btn btn-default" %>
+<% end %>
